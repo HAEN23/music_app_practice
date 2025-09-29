@@ -3,41 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SoundShock - Music Player</title>
     <link rel="stylesheet" href="./styles.css">
     <script type="module" src="./main.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="music-player">
-            <nav>
-                <div class="circle">
-                    <span>back</span>
+    <div class="app-container">
+        <header class="app-header">
+            <h1 class="app-title">SoundShock</h1>
+        </header>
+        
+        <div class="main-content">
+            <div class="current-player">
+                <div class="album-art">
+                    <img src="./media/default_img.jpg" alt="Album Art" id="song-img">
                 </div>
-                <div class="circle">
-                    <span>bars</span>
+                
+                <div class="song-info">
+                    <h2 id="title">Canción Actual</h2>
+                    <p id="artist">Artista</p>
                 </div>
-            </nav>
+                
+                <div class="audio-controls">
+                    <audio controls id="media" hidden>
+                        <!--<source id="audio" src="" type="audio/mpeg">-->
+                    </audio>
+                    <input type="range" value="0" id="progress" class="progress-bar">
+                </div>
 
-            <div id="song-details">
-                <img src="./media/default_img.jpg" alt="" id="song-img">
-                <h1 id="title"></h1>
-                <h3 id="artist"></h3>
+                <div class="player-controls">
+                    <button id="lastest" class="control-btn prev-btn">
+                        <span>⏮</span>
+                    </button>
+                    <button id="play" class="control-btn play-btn">
+                        <span>▶</span>
+                    </button>
+                    <button id="forward" class="control-btn next-btn">
+                        <span>⏭</span>
+                    </button>
+                </div>
             </div>
 
-            <div class="audio">
-                <audio controls id="media" hidden>
-                    <!--<source id="audio" src="" type="audio/mpeg">-->
-                </audio>
-                <input type="range" value="0" id="progress">
+            <div class="playlist-section">
+                <h3 class="playlist-title">Próximas canciones</h3>
+                <div class="playlist">
+                    <div class="playlist-item">
+                        <span class="song-name">Canción 1</span>
+                    </div>
+                    <div class="playlist-item">
+                        <span class="song-name">Canción 2</span>
+                    </div>
+                    <div class="playlist-item">
+                        <span class="song-name">Canción 3</span>
+                    </div>
+                </div>
             </div>
-
-            <div class="song-controls">
-                <span id="lastest">last</span>
-                <span id="play" class="play">play</span>
-                <span id="forward">forward</span>
-            </div>
-
         </div>
     </div>
 </body>
