@@ -5,8 +5,8 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #3b82c4 100%);
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #06320e 0%, #26993d 50%, #0bf827 100%);
     min-height: 100vh;
     color: white;
 }
@@ -26,7 +26,7 @@ body {
 .app-title {
     font-size: 32px;
     font-weight: bold;
-    color: #4ade80;
+    color: #ffffff;
     margin: 0;
 }
 
@@ -168,6 +168,9 @@ body {
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .playlist-title {
@@ -183,6 +186,28 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 10px; /* Espacio para la barra de scroll */
+}
+
+/*Scroll bar */
+.playlist::-webkit-scrollbar {
+    width: 6px;
+}
+
+.playlist::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.playlist::-webkit-scrollbar-thumb {
+    background: #4ade80;
+    border-radius: 10px;
+}
+
+.playlist::-webkit-scrollbar-thumb:hover {
+    background: #22c55e;
 }
 
 .playlist-item {
@@ -200,10 +225,31 @@ body {
     transform: translateX(5px);
 }
 
+.playlist-item.playing {
+    background: rgba(74, 222, 128, 0.2);
+    border-left-color: #4ade80;
+}
+
+.playlist-item.empty {
+    cursor: default;
+    opacity: 0.5;
+}
+
+.playlist-item.empty:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-left-color: transparent;
+    transform: none;
+}
+
 .song-name {
     font-size: 16px;
     color: white;
     font-weight: 500;
+}
+.song-controls{
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
 }
 
 /* Responsive Design */
@@ -233,5 +279,11 @@ body {
     
     #title {
         font-size: 24px;
+    }
+}
+@media (mim-width:300px){
+    .app-title{
+        font-size: 20px;
+        margin: 0;
     }
 }
