@@ -20,3 +20,9 @@ export const playlist_section = document.querySelector('.playlist-section');
 export const app_container = document.querySelector('.app-container');
 export const main_content = document.querySelector('.main-content');
 export const current_player = document.querySelector('.current-player');
+
+progress_bar.max = 100;
+progress_bar.value = 0;
+if(!play_btn.classList.contains("pause")){
+        play_btn.innerHTML = "<span>▶</span>";
+    }
