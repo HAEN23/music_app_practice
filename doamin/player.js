@@ -1,5 +1,5 @@
 //* Logica del reproductor//
-import {media} from "./htmlelements.js";
+import {media} from "../application/htmlelements.js";
 export default {
     _pastSongs: [],
     _nextSongs: [],
@@ -9,16 +9,23 @@ export default {
         this._progressBar.max = 100;
         this._progressBar.value = 0;
         this.initializeControlMedia(false);
-        this._controler.addEventListener('mediaupdate', this._updateProgressBar.bind(this));
+        this._controler.addEventListener('loadedmetadata', this._updateProgressBar.bind(this));
+    },
+    
+    initializeProgressBar: function() {
+        this._progressBar.addEventListener('input', () => {
+            this._controler.currentTime = (this._progressBar.value/100) * this._controler.duration;
+        });
     },
    
     _updateProgressBar: function() {
-        const progress_value = (this.currentTime / this.duration) * 100;
+        const progress_value = (this._controler.currentTime / this._controler.duration) * 100;
         this._progressBar.value = progress_value;
     },
    
    
     initializeControlMedia: function(play){
+        this._progressBar.value = 0;
         if (play){
             this._controler.play();
         }
@@ -32,17 +39,6 @@ export default {
         return this._pastSongs.pop();
     },
 
-    addToPast: function(song){
-        this._pastSongs.push(song);
-    },
-    getNextSong: function(){
-        return this._nextSongs.pop();
-    },
-    
-    getPastSong: function(){
-        return this._pastSongs.pop();
-    },
-    
     addToPast: function(song){
         this._pastSongs.push(song);
     },
